@@ -8,6 +8,8 @@
 """
 import struct
 import sys
+from time import sleep
+
 import pymem
 from pymem.pattern import scan_pattern_page
 import binascii
@@ -58,11 +60,13 @@ def getuserinfo(p) -> (int, str):
     base_address=pattern_scan_all(p.process_handle, bytes_path, return_multiple=True)
 
     #通过字符串的地址反向寻找地址
-    base_address=base_address[len(base_address)-1]
-    bytes_path1=(base_address).to_bytes(4, byteorder="little", signed=True)
-    base_address = pattern_scan_all(p.process_handle, bytes_path1, return_multiple=True)
-    base_address=base_address[0]
-
+    for i in base_address :
+        #base_address = base_address[len(base_address) - 1]
+        bytes_path1 = (i).to_bytes(4, byteorder="little", signed=True)
+        cc = pattern_scan_all(p.process_handle, bytes_path1, return_multiple=True)
+        if cc[0]>wechat_addr:
+            base_address=cc[0]
+            break
 
     #Get_UserName
     int_username_len = p.read_int(base_address - 0x5c)
