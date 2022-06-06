@@ -6,6 +6,7 @@
 @ Time:  6/05/2022
 @ FileName: main.py
 """
+import struct
 import sys
 import pymem
 from pymem.pattern import scan_pattern_page
@@ -46,30 +47,21 @@ def pattern_scan_all(handle, pattern, *, return_multiple=False):
 
     return found
 
-# getusername
+# getuserinfo
 def getuserinfo(p) -> (int, str):
     # The address of the wechatwin.dll loaded by this process
     base_address = pymem.process.module_from_name(p.process_handle, "wechatwin.dll").lpBaseOfDll
-
-    # test_info
-    #1352073216
-    #print(base_address)
-    #9460301
-    #base_address = base_address + 37107124
-    #109843400
-    #1389180340
-
-    #Find a string
-    bytes_path = b'\xc8\x13\x8c\x06\x00\x00\x00\x00\x00\x00'
+    wechat_addr=base_address
+    bytes_path = b'-----BEGIN PUBLIC KEY-----\n...'
 
     #Find a string and re Find addr
     base_address=pattern_scan_all(p.process_handle, bytes_path, return_multiple=True)
+
+    #通过字符串的地址反向寻找地址
+    base_address=base_address[len(base_address)-1]
+    bytes_path1=(base_address).to_bytes(4, byteorder="little", signed=True)
+    base_address = pattern_scan_all(p.process_handle, bytes_path1, return_multiple=True)
     base_address=base_address[0]
-
-
-
-
-
 
 
     #Get_UserName
