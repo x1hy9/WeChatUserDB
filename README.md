@@ -38,7 +38,8 @@ python main.py -d windows -k CgszBB+uQfiLA1n3HUqU0vgCFvWKMU5Ltdd9LOfvZlI=
 
 ```
 
-![image-20220713215916713](C:\Users\x1hy9\AppData\Roaming\Typora\typora-user-images\image-20220713215916713.png)
+![image-20220713215916713](https://user-images.githubusercontent.com/67219887/178893741-2c4e78bd-ecca-4575-934a-927e3afe3426.png)
+
 
 
 
@@ -53,7 +54,8 @@ python main.py -d mac
 0x6000003624f8: 0x9a 0x72 0xa6 0x17 0xe0 0x17 0x7c 0x56
 ```
 
-![image-20220713220751900](C:\Users\x1hy9\AppData\Roaming\Typora\typora-user-images\image-20220713220751900.png)
+![image-20220713220751900](https://user-images.githubusercontent.com/67219887/178893830-28db47a9-daee-49fa-aba3-ff64ba5b67ec.png)
+
 
 
 
@@ -63,7 +65,8 @@ python main.py -d mac
 python main.py -s
 ```
 
-![image-20220713220718486](C:\Users\x1hy9\AppData\Roaming\Typora\typora-user-images\image-20220713220718486.png)
+![image-20220713220718486](https://user-images.githubusercontent.com/67219887/178893845-dc9dcbcf-d037-4138-bf9e-36b5b5e65624.png)
+
 
 #### 压缩WX数据
 
@@ -71,7 +74,8 @@ python main.py -s
  python3 main.py -c db -i wxid_*********522 -o "C:\Users\文件路径\Desktop\info.zip"
 ```
 
-![image-20220713220637286](C:\Users\x1hy9\AppData\Roaming\Typora\typora-user-images\image-20220713220637286.png)
+![image-20220713220637286](https://user-images.githubusercontent.com/67219887/178893885-68d9da58-a12c-42f3-b640-fc1408149935.png)
+
 
 
 
