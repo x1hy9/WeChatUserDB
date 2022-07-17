@@ -3,7 +3,7 @@ GetWeChat DBPassword&amp;&amp;UserInfo(PC数据库密码以及相关微信用户
 
 ```
 mac 要安装 brew install sqlcipher 否则无法使用pysqlcipher3库
-windows安装pysqlcipher3要自行编译，奈何要下VS故直接调用开源exe
+windows安装pysqlcipher3要自行编译，而且要下载VS所以选择直接调用exe
 ```
 
 # 原理
