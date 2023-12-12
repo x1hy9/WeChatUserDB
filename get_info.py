@@ -72,7 +72,8 @@ def getuserinfo(p) -> (int, str):
         bytes_path1 = (i).to_bytes(4, byteorder="little", signed=True)
         cc = pattern_scan_all(p.process_handle, bytes_path1, return_multiple=True)
 
-        if cc[0] > wechat_addr:
+        # 微信版本3.9.0.28一直卡这里出错，加个判断
+        if cc and cc[0] > wechat_addr:
             base_address = cc[0]
             break
 
@@ -91,7 +92,9 @@ def getuserinfo(p) -> (int, str):
 
     # Get_Tel
     int_Tel_len = p.read_int(base_address - 0x47c)
-    Tel = p.read_bytes(base_address - 0x48c, int_Tel_len)
+    # Tel = p.read_bytes(base_address - 0x48c, int_Tel_len)
+    # 微信版本3.9.0.28，虽然我不知道为什么，但是这样可以解决手机号获取不到的问题
+    Tel = p.read_bytes(base_address - 0x484, 11)
 
     # Get_SqliteKey
     int_SqliteKey_len = p.read_int(base_address - 0x8c)
